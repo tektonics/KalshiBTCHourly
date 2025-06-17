@@ -70,7 +70,7 @@ class KalshiClient:
 		"id": 1,
 		"cmd": "subscribe",
 		"params": {
-		"channels": ["ticker", "orderbook_delta"],
+                "channels": ["ticker_v2", "orderbook_delta"],
 		"market_ticker": market_ticker
    			 }
             }
