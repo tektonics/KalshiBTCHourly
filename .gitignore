@@ -1,1 +1,6 @@
 __pycache__/
+
+# environment files
+.env
+# keys
+test_key.txt
