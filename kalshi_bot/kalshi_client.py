@@ -1,6 +1,5 @@
 import os
 import base64
-import datetime
 import requests
 import asyncio
 import json
@@ -33,7 +32,6 @@ class KalshiClient:
 
     def generate_signature(self, timestamp, method, path):
         message = f"{timestamp}{method}{path}".encode("utf-8")
-        path = "/trade-api/ws/v2"
         signature = self.private_key.sign(
                 message,
                 padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH),
