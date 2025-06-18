@@ -21,6 +21,7 @@ class KalshiClient:
         self.private_key_path = os.getenv("KALSHI_PRIVATE_KEY_PATH")
         self.private_key = self.load_private_key()
 
+        # Stores the latest ticker data keyed by market ticker
         self.mid_prices = {}
         self.orderbooks = {}
 
@@ -90,9 +91,13 @@ class KalshiClient:
             market_ticker = data.get("market_ticker")
             if market_ticker:
                 self.mid_prices[market_ticker] = {
-                    "yes": data.get("yes_mid_price"),
-                    "no": data.get("no_mid_price")
-            }
+                    "price": data.get("price"),
+                    "yes_bid": data.get("yes_bid"),
+                    "yes_ask": data.get("yes_ask"),
+                    "no_bid": data.get("no_bid"),
+                    "no_ask": data.get("no_ask"),
+                    "volume_delta": data.get("volume_delta"),
+                }
         elif msg_type == "orderbook_delta":
             market_ticker = data.get("market_ticker")
             if market_ticker:
